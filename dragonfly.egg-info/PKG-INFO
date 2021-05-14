@@ -1,0 +1,54 @@
+Metadata-Version: 1.0
+Name: dragonfly
+Version: 0.6.5
+Summary: Speech recognition extension library
+Home-page: http://code.google.com/p/dragonfly/
+Author: Christo Butcher
+Author-email: dist.dragonfly@twizzy.biz
+License: LGPL
+Description: 
+        Dragonfly -- a speech recognition extension library
+        ============================================================================
+        
+        Dragonfly offers a powerful Python interface to speech
+        recognition and a high-level language object model to easily
+        create and use voice commands.  Dragonfly supports following
+        speech recognition engines:
+        
+        - Dragon NaturallySpeaking (DNS), a product of *Nuance*
+        - Windows Speech Recognition (WSR), included with Microsoft
+        Windows Vista and freely available for Windows XP
+        
+        
+        Basic example
+        ----------------------------------------------------------------------------
+        
+        A very simple example of Dragonfly usage is to create a static
+        voice command with a callback that will be called when the
+        command is spoken.  This is done as follows: ::
+        
+        from dragonfly.all import Grammar, CompoundRule
+        
+        # Voice command rule combining spoken form and recognition processing.
+        class ExampleRule(CompoundRule):
+        spec = "do something computer"                  # Spoken form of command.
+        def _process_recognition(self, node, extras):   # Callback when command is spoken.
+        print "Voice command spoken."
+        
+        # Create a grammar which contains and loads the command rule.
+        grammar = Grammar("example grammar")                # Create a grammar to contain the command rule.
+        grammar.add_rule(ExampleRule())                     # Add the command rule to the grammar.
+        grammar.load()                                      # Load the grammar.
+        
+        The example above is very basic and doesn't show any of
+        Dragonfly's exciting features, such as dynamic speech elements.
+        To learn more about these, please take a look at the project's
+        documentation `here <http://dragonfly.googlecode.com/svn/trunk/dragonfly/documentation/index.html>`_.
+        
+        
+Platform: UNKNOWN
+Classifier: Environment :: Win32 (MS Windows)
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python
